@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    margin: 10vh auto;
+}
+
+h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 1.1;
+}
+
+.containerone {
+    padding: 10px;
+}
+
+.containertwo {
+    background-color: aqua;
+    padding: 10px;
+    box-shadow: 4px 4px 9px rgba(41, 41, 41, 0.356);
+}
+
+.check {
+    display: block;
+    padding: 10px 25px;
+    margin-top: 3vh;
+}
+
+input {
+    padding: 10px 5px;
+}
+
+.output {
+    border: 1px solid black;
+    padding: 10px 5px;
+}
