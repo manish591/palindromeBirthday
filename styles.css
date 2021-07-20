@@ -44,3 +44,9 @@ input {
     border: 1px solid black;
     padding: 10px 5px;
 }
+
+@media only screen and (min-width: 700px) {
+    .container {
+        width: 60vw;
+    }
+}
