@@ -74,9 +74,9 @@ function setDisplay () {
             let daysToNextPalindrome = differenceBtnDates / (1000 * 3600 * 24);
 
             if (nextPalindromeDate.getMonth() < 10) {
-                month = `0${nextPalindromeDate.getMonth()}`;
+                month = `0${nextPalindromeDate.getMonth() + 1}`;
               } else {
-                month = `${nextPalindromeDate.getMonth()}`
+                month = `${nextPalindromeDate.getMonth() + 1}`;
               }
               if (nextPalindromeDate.getDate() < 10) {
                 day = `0${nextPalindromeDate.getDate()}`;
