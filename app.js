@@ -63,6 +63,18 @@ function setDisplay () {
         let day;
 
         let findPalindrome = isPalindrome(inputDate + inputMonth + inputYear);
+
+        if(!findPalindrome) {
+            findPalindrome = isPalindrome(inputYear + inputMonth + inputDate);
+        }
+        console.log(findPalindrome)
+        if (!findPalindrome) {
+            findPalindrome = isPalindrome(inputMonth + inputDate + inputYear)
+        }
+        console.log(findPalindrome)
+        if (!findPalindrome) {
+            findPalindrome = isPalindrome(Number(inputMonth) + inputDate + inputYear)
+        }
         console.log(findPalindrome);
 
         if (findPalindrome) {
