@@ -1,14 +1,6 @@
 const DOB = document.querySelector('.enteryourdate');
 const checkBtn = document.querySelector('.check');
 const output = document.querySelector('.output');
-
-
-    // if (isPalindrome(dateOfBirth)) {
-    //     output.innerText = 'Your birthday is palindrome.'
-    // } else if (!isPalindrome(dateOfBirth)) {
-    //     output.innerText = 'Your birthday is not palindrome.'
-    // }
-    
   
 
   
@@ -35,18 +27,29 @@ function formDateStr(date) {
     return dd;
 }
 
+
 function findNextPalindrome(dd, mm, yyyy) {
     let date1 = Number(dd);
     let date2 = Number(mm);
     let date3 = Number(yyyy);
 
     let dateTwo = new Date(date3, date2 - 1, date1);
+    let dateThree = new Date(date3, date2 - 1, date1);
+    //forword
     while (!isPalindrome(formDateStr(dateTwo))) {
 
         dateTwo.setDate(dateTwo.getDate() + 1);
     }
-    return dateTwo;
+   
+    while (!isPalindrome(formDateStr(dateThree))) {
+
+        dateThree.setDate(dateThree.getDate() - 1);
+    }
+
+    return [dateTwo, dateThree];
+
 }
+
 
 function setDisplay () {
     let birthStr = DOB.value;
@@ -70,21 +73,34 @@ function setDisplay () {
             console.log(userDate);
             console.log(nextPalindromeDate);
 
-            let differenceBtnDates = nextPalindromeDate.getTime() - userDate.getTime();
-            let daysToNextPalindrome = differenceBtnDates / (1000 * 3600 * 24);
+            let dateTwoDiffrence = nextPalindromeDate[0].getTime() - userDate.getTime();
+            let dateThreeDiffrence = nextPalindromeDate[1].getTime() - userDate.getTime();
 
-            if (nextPalindromeDate.getMonth() < 10) {
-                month = `0${nextPalindromeDate.getMonth() + 1}`;
-              } else {
-                month = `${nextPalindromeDate.getMonth() + 1}`;
-              }
-              if (nextPalindromeDate.getDate() < 10) {
-                day = `0${nextPalindromeDate.getDate()}`;
-              } else {
-                day = `${nextPalindromeDate.getDate()}`;
-              }
+            function addZeros(index) {
+                if (nextPalindromeDate[index].getMonth() < 10) {
+                    month = `0${nextPalindromeDate[index].getMonth() + 1}`;
+                  } else {
+                    month = `${nextPalindromeDate[index].getMonth() + 1}`;
+                  }
+                  if (nextPalindromeDate[index].getDate() < 10) {
+                    day = `0${nextPalindromeDate[index].getDate()}`;
+                  } else {
+                    day = `${nextPalindromeDate[index].getDate()}`;
+                  }
 
-            output.innerText = `Your birthday is not a palindrome date. You have missed it by ${daysToNextPalindrome} days. Next palindrome is on ${day}/${month}/${nextPalindromeDate.getFullYear()}.`;
+                  return `The Nearest Palindrome date is ${day}/${month}/${nextPalindromeDate[index].getFullYear()}`
+            }
+
+            if (dateTwoDiffrence < dateThreeDiffrence) {
+                let daysToNextPalindrome = dateTwoDiffrence / (1000 * 3600 * 24);
+                output.innerText = `Your birthday is not a palindrome date. You have missed it by ${daysToNextPalindrome} days. ${addZeros(0)}`;
+            } 
+            
+            else if (dateThreeDiffrence < dateTwoDiffrence) {
+                let daysToNextPalindrome = -(dateThreeDiffrence / (1000 * 3600 * 24));
+                output.innerText = `Your birthday is not a palindrome date. You have missed it by ${daysToNextPalindrome} days. ${addZeros(1)}`;
+            }
+
         }
 
     }, 3000)
