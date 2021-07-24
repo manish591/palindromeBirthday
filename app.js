@@ -25,9 +25,10 @@ function formDateStr(date) {
     } else {
         dd = dd + String(date.getMonth() + 1);
     }
-    return dd += String(date.getFullYear());
+
+     dd += String(date.getFullYear());
     
-    
+    return dd;
 }
 
 
@@ -53,31 +54,6 @@ function findNextPalindrome(dd, mm, yyyy) {
 
 }
 
-function checkAllFormat (y, m, d) {
-
-    const dateFormat1 = y+m+d;
-    const dateFormat2 = d+m+y;
-    const dateFormat3 = m+d+y.substring(2);
-    const dateFormat4 = Number(m)+d+y;
-
-    if (isPalindrome(dateFormat1)){
-        return (`${y}${m}${d}`);
-    }
-    else if(isPalindrome(dateFormat2)){
-        return (`${d}${m}${y}`);
-    }
-    else if(isPalindrome(dateFormat3)){
-        return (`${m}${d}${y.substring(2)}`);
-    }
-    else if(isPalindrome(dateFormat4)){
-        return (`${Number(m)}${d}${y}`);
-    }
-    else{
-        return null;
-    }
-
-}
-
 
 function setDisplay () {
     let birthStr = DOB.value;
@@ -89,26 +65,32 @@ function setDisplay () {
         const inputDate = dateArray[2];
         let month;
         let day;
+        let format;
 
         let findPalindrome = isPalindrome(inputDate + inputMonth + inputYear);
+        format = 'dmy';
 
         if(!findPalindrome) {
             findPalindrome = isPalindrome(inputYear + inputMonth + inputDate);
+            format = 'ymd';
         }
         console.log(findPalindrome)
         if (!findPalindrome) {
             findPalindrome = isPalindrome(inputMonth + inputDate + inputYear)
+            format = 'mdy';
         }
         console.log(findPalindrome)
         if (!findPalindrome) {
             findPalindrome = isPalindrome(Number(inputMonth) + inputDate + inputYear)
+            format = 'numbermdy';
         }
         console.log(findPalindrome);
 
         if (findPalindrome) {
             output.innerText = 'Your birthday is a palindrome date.';
         } else {
-            let nextPalindromeDate = findNextPalindrome(inputMonth, inputDate, inputYear);
+
+            let nextPalindromeDate = findNextPalindrome(inputDate, inputMonth, inputYear);
 
             let userDate = new Date(inputYear, inputMonth - 1, inputDate);
             console.log(userDate);
