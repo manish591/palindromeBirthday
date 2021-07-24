@@ -50,6 +50,14 @@ function findNextPalindrome(dd, mm, yyyy) {
 
 }
 
+function checkAllFormat (y, m, d) {
+
+    const dateFormat1 = yyyy+mm+dd;
+    const dateFormat2 = dd+mm+yyyy;
+    const dateFormat3 = mm+dd+yyyy.substring(2);
+    const dateFormat4 = Number(mm)+dd+yyyy;
+}
+
 
 function setDisplay () {
     let birthStr = DOB.value;
