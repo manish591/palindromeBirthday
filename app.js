@@ -14,21 +14,43 @@ function formDateStr(date) {
 
     let dd = ''
 
-    if (date.getDate() < 10) {
-        dd = "0" + String(date.getDate());
-    } else {
-        dd = String(date.getDate());
-    }
+    // if (date.getDate() < 10) {
+    //     dd = "0" + String(date.getDate());
+    // } else {
+    //     dd = String(date.getDate());
+    // }
 
-    if (date.getMonth() < 9) {
-        dd = dd + "0" + String(date.getMonth() + 1);
-    } else {
-        dd = dd + String(date.getMonth() + 1);
-    }
+    // if (date.getMonth() < 9) {
+    //     dd = dd + "0" + String(date.getMonth() + 1);
+    // } else {
+    //     dd = dd + String(date.getMonth() + 1);
+    // }
 
-     dd += String(date.getFullYear());
+    //  dd += String(date.getFullYear());
     
-    return dd;
+    // return dd;
+
+
+
+    let d1 = (date.getDate()).toString();
+    let m1 = (date.getMonth() + 1).toString();
+    let y1 = (date.getFullYear()).toString();
+    
+    if (isPalindrome(d1 + m1 + y1)) {
+        return dd = d1+m1+y1;
+    } else if (isPalindrome(y1+m1+d1)) {
+        return dd = y1+m1+d1;
+    } else if (isPalindrome(m1+d1+y1)) {
+        return dd = m1+d1+y1.substring(2);
+    } else if (isPalindrome((Number(m1)).toString() + d1 + y1)) {
+        return m1+d1+y1
+    } else {
+        return null;
+    }
+
+
+
+
 }
 
 
@@ -40,12 +62,12 @@ function findNextPalindrome(dd, mm, yyyy) {
     let dateTwo = new Date(date3, date2 - 1, date1);
     let dateThree = new Date(date3, date2 - 1, date1);
     //forword
-    while (!isPalindrome(formDateStr(dateTwo))) {
+    while (!formDateStr(dateTwo)) {
 
         dateTwo.setDate(dateTwo.getDate() + 1);
     }
    
-    while (!isPalindrome(formDateStr(dateThree))) {
+    while (!formDateStr(dateThree)) {
 
         dateThree.setDate(dateThree.getDate() - 1);
     }
