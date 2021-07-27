@@ -21,11 +21,16 @@ h1 {
 }
 
 .containerone {
-    padding: 10px;
+    margin-bottom: 30vh;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    position: relative;
 }
 
 .containertwo {
-    background-color: aqua;
+    background-color: black;
+    color: white;
     padding: 10px;
     box-shadow: 4px 4px 9px rgba(41, 41, 41, 0.356);
 }
@@ -36,17 +41,64 @@ h1 {
     margin-top: 3vh;
 }
 
+.title {
+    margin-bottom: 5vh;
+}
+
 input {
     padding: 10px 5px;
 }
 
 .output {
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 10px 5px;
 }
+
+.calender {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.topsection {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.enteryourdate, .output {
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+}
+
+.connect {
+    background-color:grey;
+    width: 100%;
+}
+
+.github {
+    position: absolute;
+    right: 10px;
+}
+
+.githubrepo {
+    border: 1px solid rgba(39, 38, 38, 0.692);
+    padding: 5px 10px;
+}
+
+.githubrepo a {
+    text-decoration: none;
+    color: rgb(43, 42, 42);
+}
+
 
 @media only screen and (min-width: 700px) {
     .container {
         width: 60vw;
+    }
+
+    .calender {
+        width: 60vw;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
     }
 }
