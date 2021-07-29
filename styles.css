@@ -90,6 +90,14 @@ input {
     color: rgb(43, 42, 42);
 }
 
+.gifcalc {
+    width: 60%;
+    margin-top: 5vh;
+}
+
+.hide {
+    display: none;
+}
 
 @media only screen and (min-width: 700px) {
     .container {

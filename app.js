@@ -1,6 +1,7 @@
 const DOB = document.querySelector('.enteryourdate');
 const checkBtn = document.querySelector('.check');
 const output = document.querySelector('.output');
+const gif = document.querySelector('.gifcalc');
   
 
   
@@ -37,7 +38,7 @@ function formDateStr(date) {
     else if (isPalindrome(y1+m1+d1)) {
         return dd = y1+m1+d1;
     } 
-    else if (isPalindrome(m1+d1+y1)) {
+    else if (isPalindrome(m1+d1+y1.substring(2))) {
         return dd = m1+d1+y1.substring(2);
     } 
     else if (isPalindrome(Number(m1).toString()+d1+y1)) {
@@ -57,6 +58,7 @@ function findNextPalindrome(dd, mm, yyyy) {
 
     let dateTwo = new Date(date3, date2 - 1, date1);
     let dateThree = new Date(date3, date2 - 1, date1);
+    let pali1, pali2
     //forword
     while (!formDateStr(dateTwo)) {
 
@@ -66,7 +68,6 @@ function findNextPalindrome(dd, mm, yyyy) {
     while (!formDateStr(dateThree)) {
 
         dateThree.setDate(dateThree.getDate() - 1);
-        // console.log(dateThree)
     }
     return [dateTwo, dateThree];
 
@@ -76,7 +77,14 @@ function findNextPalindrome(dd, mm, yyyy) {
 function setDisplay () {
     let birthStr = DOB.value;
 
+    if (DOB.value === '') {
+        return output.innerText = 'Please input a value to proceed!'
+    }
+
+    gif.classList.remove('hide');
+
     setTimeout(function() {
+        gif.classList.add('hide');
         let dateArray = birthStr.split("-");
         const inputYear = dateArray[0];
         const inputMonth = dateArray[1];
@@ -92,7 +100,7 @@ function setDisplay () {
         }
         console.log(findPalindrome)
         if (!findPalindrome) {
-            findPalindrome = isPalindrome(inputMonth + inputDate + inputYear)
+            findPalindrome = isPalindrome(inputMonth + inputDate + inputYear.substring(2))
         }
         console.log(findPalindrome)
         if (!findPalindrome) {
@@ -128,7 +136,7 @@ function setDisplay () {
                     day = `${nextPalindromeDate[index].getDate()}`;
                   }
 
-                  return `The Nearest Palindrome date is ${day}/${month}/${nextPalindromeDate[index].getFullYear()}`
+                  return `The Nearest Palindrome date is ${day}-${month}-${nextPalindromeDate[index].getFullYear()}`;
             }
             console.log(dateThreeDiffrence < dateTwoDiffrence);
 
@@ -144,7 +152,7 @@ function setDisplay () {
 
         }
 
-    }, 3000)
+    }, 4000)
 }
 
 checkBtn.addEventListener('click', setDisplay);
