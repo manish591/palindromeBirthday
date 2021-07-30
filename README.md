@@ -1,0 +1,2 @@
+# palindromeBirthday
+A simple app that checks whether your birthday is a palindrome. Palindrome dates read forward and backwards same. Many people believe that palindrome dates are fortunate. In this app, You have to enter your date of birth and whether your birthday is palindrome or not. If your birthday is not a palindrome date then, It will tell you the nearest palindrome from the given date. This app is build using HTML, CSS & Javascript.
