@@ -2,6 +2,8 @@ const DOB = document.querySelector('.enteryourdate');
 const checkBtn = document.querySelector('.check');
 const output = document.querySelector('.output');
 const gif = document.querySelector('.gifcalc');
+
+let format;
   
 
   
@@ -33,15 +35,19 @@ function formDateStr(date) {
     }
     
     if (isPalindrome(d1 + m1 + y1)) {
+        format = 'dmy';
         return dd = d1+m1+y1;
     } 
     else if (isPalindrome(y1+m1+d1)) {
+        format = 'ymd';
         return dd = y1+m1+d1;
     } 
     else if (isPalindrome(m1+d1+y1.substring(2))) {
+        format = 'mdyy';
         return dd = m1+d1+y1.substring(2);
     } 
     else if (isPalindrome(Number(m1).toString()+d1+y1)) {
+        format = 'mddyyyy';
         return dd = (Number(m1)).toString()+d1+y1;
     } 
     else {
@@ -58,13 +64,13 @@ function findNextPalindrome(dd, mm, yyyy) {
 
     let dateTwo = new Date(date3, date2 - 1, date1);
     let dateThree = new Date(date3, date2 - 1, date1);
-    let pali1, pali2
+    console.log(format)
     //forword
     while (!formDateStr(dateTwo)) {
 
         dateTwo.setDate(dateTwo.getDate() + 1);
     }
-   
+   console.log(formDateStr(dateTwo))
     while (!formDateStr(dateThree)) {
 
         dateThree.setDate(dateThree.getDate() - 1);
@@ -91,7 +97,7 @@ function setDisplay () {
         const inputDate = dateArray[2];
         let month;
         let day;
-        let format;
+        console.log('format is', format)
 
         let findPalindrome = isPalindrome(inputDate + inputMonth + inputYear);
 
